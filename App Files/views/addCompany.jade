@@ -1,0 +1,47 @@
+extends layout
+
+block content
+	h2 Add Company
+	form(role="form", method="POST", action="/displayCompany")
+		input(type="hidden", name="method", value="PUT")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Name
+					input(class="form-control", type="text", name="name", id="cname")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Street
+					input(class="form-control", type="text", name="street", id="cstreet")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p City
+					input(class="form-control", type="text", name="city", id="ccity")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Province/State
+					input(class="form-control", type="text", name="state", id="cstate")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Country
+					select(class="form-control", type="text", name="country", id="ccountry")
+						option Canada
+						option Mexico
+						option USA
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p SLA Contract
+					select(class="form-control", type="text", name="sla", id="csla")
+						option Yes
+						option No
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Contact
+					input(class="form-control", type="text", name="contact", id="ccontact")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Email
+					input(class="form-control", type="email", name="email", id="email")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p
+					input(type="submit", name="submit", value="submit")

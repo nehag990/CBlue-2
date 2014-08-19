@@ -1,0 +1,18 @@
+#button1 {
+  padding: 50px;
+  font-family: 'Shadows Into Light', cursive;
+  background-image: -webkit-linear-gradient(top, #9900cc 0%, #80ccff 100%);
+  background-image: linear-gradient(to bottom, #9900cc 0%, #80ccff 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9900cc', endColorstr='#80ccff', GradientType=0);
+}
+
+#title {
+  	font-family: 'Shadows Into Light', cursive;
+  	color: #FFFFFF;
+  	font-size: 100px;
+  	text-align: center;
+}
+a {
+  color: #00B7FF;
+}

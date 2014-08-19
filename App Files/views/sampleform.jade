@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	h2 Sample Form
+	form(role="form", method="POST", action="/showresults")
+		input(type="hidden", name="method", value="PUT")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Name
+					input(class="form-control", type="text", name="name", id="fename")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Email
+					input(class="form-control", type="email", name="email", id="feemail")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p Location
+					input(class="form-control", type="text", name="location", id="location")
+		.row
+			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
+				p
+					input(type="submit", name="submit", value="submit")

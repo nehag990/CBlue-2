@@ -1,0 +1,26 @@
+extends layout
+
+block content
+        h1 Edit #{tools.MTName}
+        form(name='deleteTool', action='/deleteMasterTool', method='POST')
+            button(class='btn btn-default', name='id', type='submit', value='#{tools._id}') Delete 
+                
+        br
+
+        form(name='editTool', action='/updateMasterTool', method='POST', role='form')
+            div.form-group
+                label ID:  #{tools._id}
+            div.form-group
+                label Name:
+                input(class='form-control', name='name',type='text', value='#{tools.MTName}')
+            div.form-group
+                label Description:
+                input(class='form-control', name='description', type='text', value='#{tools.MTDescription}')
+            div.form-group
+                label Price:
+                input(class='form-control', name='price', type='number', value='#{tools.MTPrice}')
+            div.form-group
+                label Weight:
+                input(class='form-control', name='weight', type='number', value='#{tools.MTWeight}')
+            div.form-group
+                button(class='btn btn-default' name='id' type='submit', value='#{tools._id}') Submit

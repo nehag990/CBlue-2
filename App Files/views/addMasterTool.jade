@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 MasterTool
+  form(name='addMasterTool', action='/createMasterTool', method='POST', role='form')
+    div.form-group
+      label Tool Name
+      input(class='form-control', name='MTName', type='text')
+    div.form-group  
+      label Description
+      input(class='form-control', name='MTDescription', type='text')
+    div.form-group
+      label Price
+      input(class='form-control', name='MTPrice', type='number')
+    div.form-group  
+      label Weight
+      input(class='form-control', name='MTWeight', type='number')
+    div.form-group  
+      input(class='btn', type='submit', value='Submit')

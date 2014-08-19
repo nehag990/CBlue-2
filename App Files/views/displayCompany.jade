@@ -1,0 +1,32 @@
+extends layout
+
+//-doctype html 
+//-added doctype html as per web best 
+
+block content
+    h2 Show Results
+    table(border='1', class="table-hover").table
+        tr
+            td Name:
+            td #{cname}
+        tr
+            td Street:
+            td #{cstreet}
+        tr
+            td City:
+            td #{ccity}
+        tr
+            td State:
+            td #{cstate}
+        tr
+            td Country:
+            td #{ccountry}
+        tr
+            td Sla:
+            td #{csla}
+        tr
+            td Contact:
+            td #{ccontact}
+        tr
+            td Email:
+            td #{cemail}

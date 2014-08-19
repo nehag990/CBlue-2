@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h1 Master Tool List
+    table.table
+        
+            thead
+                th ID
+                th Name
+                th Description
+                th Price
+                th Weight
+                th Edit
+            tbody
+            each item in tools
+                tr
+                    td #{item._id}
+                    td #{item.MTName}
+                    td #{item.MTDescription}
+                    td #{item.MTPrice}
+                    td #{item.MTWeight}
+                    td 
+                        a(href="/listMasterTool?id=#{item._id}") edit
+
