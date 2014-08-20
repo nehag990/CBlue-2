@@ -1,5 +1,36 @@
 extends layout
 
 block content
-  h1= title
-  p Hello, World! 
+
+    h1= "Digital Tool Belt"
+    h1= "Field Engineer Manager"
+    nav.navbar.navbar-default(role='navigation')
+        .container-fluid
+            //
+               Brand and toggle get grouped for better mobile display 
+            .navbar-header
+              button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+              
+            //
+               Collect the nav links, forms, and other content for toggling 
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li.active
+                  a(href='/startApp') Home
+                li.active
+                  a(href='/addRequest') Create New Service Request
+                li.active
+                  a(href='/listRequest') View Existing Service Request
+              ul.nav.navbar-nav.navbar-right
+                
+            //
+               /.navbar-collapse 
+          //
+             /.container-fluid 
+
+    
+    

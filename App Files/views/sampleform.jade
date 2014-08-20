@@ -1,22 +1,32 @@
-extends layout
-
-block content
-	h2 Sample Form
-	form(role="form", method="POST", action="/showresults")
-		input(type="hidden", name="method", value="PUT")
-		.row
-			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
-				p Name
-					input(class="form-control", type="text", name="name", id="fename")
-		.row
-			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
-				p Email
-					input(class="form-control", type="email", name="email", id="feemail")
-		.row
-			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
-				p Location
-					input(class="form-control", type="text", name="location", id="location")
-		.row
-			.form-group.col-lg-6.col-md-6.col-sm-4.col-xs-4
-				p
-					input(type="submit", name="submit", value="submit")
+doctype html
+html
+  head
+    title Sample Form
+  body
+    h2 Sample Form
+    form(name='sampleform' action='/showresults' method='POST')
+      table(border='0')
+        tr
+          td Location
+          td 
+            input(name='location' id='location' type='text' size='30' required)
+        tr
+          td FE Name
+          td
+            input(name='fename' id='fename' type='text' size='30' required)
+        tr
+          td FE Email
+          td
+            input(name='feemail' id='feemail' type='text' size='30' required)      
+        tr
+          td Severity
+          td
+            select(name='severity' id='severity')
+              option(value='High Penalty') High Penalty
+              option(value='Penalty') Penalty
+              option(value='Urgency') Urgency
+              option(value='Regular') Regular
+              option(value='Routine') Routine     
+        tr
+          td
+            input(type='submit', name='submit', value='request')

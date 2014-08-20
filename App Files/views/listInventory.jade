@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h1 Tool Inventory List
+    table.table
+        
+            thead
+                th Tool
+                th Description
+                th Serial Number
+                th Status
+                th Install Date
+                th Edit
+            tbody
+            each item in list
+                tr
+                    td #{item._TIMaster.MTName}
+                    td #{item._TIMaster.MTDescription}
+                    td #{item._TISerialNumber}
+                    td #{item.TIStatus}
+                    td #{item.TIInstallDate}
+                    td 
+                        a(href="/listInventory?id=#{item._id}") edit
+                   

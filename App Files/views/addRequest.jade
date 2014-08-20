@@ -1,0 +1,28 @@
+extends layout
+
+block content  
+	h2 New Request
+	form(name='addRequest' action='/createRequest' method='POST' role='form')
+		div.form-group
+			label Date
+			input(class='form-control' name='date' type='date')
+		div.form-group
+			label Client
+			input(class='form-control' name='client' type='text')
+		div.form-group
+			label Location
+			input(class='form-control' name='location' type='text')
+		div.form-group
+			label Field Engineer Manager
+			input(class='form-control' name='FEM' type='text')
+		div.form-group
+			label Field Engineer
+			input(class='form-control' name='FE' type='text')
+		div.form-group
+			label Severity
+			select(class='form-control' name='severity')
+				option(value='low') Low
+				option(value='medium') Medium
+				option(value='high') high
+		div.form-group
+			button(class='btn btn-default' type='Submit') Submit

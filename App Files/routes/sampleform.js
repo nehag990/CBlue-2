@@ -3,10 +3,9 @@ var router = express.Router();
 
 var app = express();
 
-/* GET helloworld page. */
+/* GET sample form page. */
 router.get('/sampleform', function(req, res) {
-  res.render('sampleform', { title: 'Sample Form' });
+  res.render('sampleform');
 });
-
 
 module.exports = router;

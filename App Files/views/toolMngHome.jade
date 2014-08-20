@@ -2,7 +2,7 @@ extends layout
 
 block content
     h1= "Digital Tool Belt"
-    h1= "Field Engineer"
+    h1= "Tool Manager"
     nav.navbar.navbar-default(role='navigation')
         .container-fluid
             //
@@ -13,7 +13,7 @@ block content
                 span.icon-bar
                 span.icon-bar
                 span.icon-bar
-             // a.navbar-brand(href='#') Field Engineer
+             // a.navbar-brand(href='#') Tool Manager
             //
                Collect the nav links, forms, and other content for toggling 
             #bs-example-navbar-collapse-1.collapse.navbar-collapse
@@ -21,7 +21,13 @@ block content
                 li.active
                   a(href='/startApp') Home
                 li.active
-                  a(href='/listRequest') List Service Requests
+                  a(href='/addInventory') Add Inventory
+                li.active
+                  a(href='/addMasterTool') Add Master Tool
+                li.active
+                  a(href='/listInventory') List Inventory
+                li.active
+                  a(href='/listMasterTool') List Master Tool
               ul.nav.navbar-nav.navbar-right
                 
             //

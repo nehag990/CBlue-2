@@ -1,0 +1,62 @@
+extends layout
+
+block content  
+	h1 Edit Request
+	form(name='deleteRequest', action='/deleteRequest', method='post')
+			button(class='btn btn-default', name='id', type='submit', value='#{list._id}') Delete 
+				//allows hiding of one data value inside button
+				// actions need to be inside forms
+		br
+	table.table
+		thead
+			th Tool Name
+			th Date First Needed
+			th Date of Return
+			th edit
+		tbody
+			each item in list.ToolRequest
+				tr
+					td #{item._masterTool.MTName}
+					td #{item.Start}
+					td #{item.End}
+					td
+						a(href='requestList?q=#{list._id}&id=#{item._id}') edit
+	form(name='editRequest' action='/updateRequest' method='POST' role='form')
+		div.form-group
+			label Date of Submission
+				//if for displaying date as value (should cover all issues as date must be YYYY-MM-DD)
+			-var month = list.RDate.getMonth() + 1
+			-var day = list.RDate.getDate()
+			if (month < 10)
+				if (day < 10)
+					input(class='form-control', name='Install', value='#{list.RDate.getFullYear()}-0#{list.RDate.getMonth()+1}-0#{list.RDate.getDate()}' type='date')
+				else
+					input(class='form-control', name='Install', value='#{list.RDate.getFullYear()}-0#{list.RDate.getMonth()+1}-#{list.RDate.getDate()}' type='date')
+			else
+				if (day < 10)
+					input(class='form-control', name='Install', value='#{list.RDate.getFullYear()}-#{list.RDate.getMonth()+1}-0#{list.RDate.getDate()}' type='date')
+				else
+					input(class='form-control', name='Install', value='#{list.RDate.getFullYear()}-#{list.RDate.getMonth()+1}-#{list.RDate.getDate()}' type='date')      
+			
+			
+		div.form-group
+			label Client
+			input(class='form-control' name='client' value='#{list.RClient}' type='text')
+		div.form-group
+			label Location
+			input(class='form-control' name='location' value='#{list.RLocation}' type='text')
+		div.form-group
+			label Field Engineer Manager
+			input(class='form-control' name='FFEM' value='#{list.RFFEM}' type='text')
+		div.form-group
+			label Field Engineer
+			input(class='form-control' name='FE' value='#{list.RFE}' type='text')
+		div.form-group
+			label Severity of Incident
+			select(class='form-control' name='severity')
+				option(value='#{list.RSeverity}') #{list.RSeverity}
+				option(value='low') Low
+				option(value='medium') Medium
+				option(value='high') high
+		div.form-group
+			button(class='btn btn-default' name='id' value='#{list._id}' type='Submit') Submit

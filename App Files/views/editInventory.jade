@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    for item in list 
+        //allows us to get data inside array passed in route.get func
+        h1 Edit #{item._TIMaster.MTName}
+        form(name='deleteInventory', action='/deleteInventory', method='post')
+            button(class='btn btn-default', name='id', type='submit', value='#{item._id}') Delete 
+                //allows hiding of one data value inside button
+                // actions need to be inside forms
+        br
+
+        form(name='editInventory', action='/updateInventory', method='POST', role='form')
+            div.form-group
+              label Serial number
+              input(class='form-control', name='Serial', type='text' value='#{item._TISerialNumber}')
+            div.form-group
+              label Install Date
+                //if for displaying date as value (should cover all issues as date must be YYYY-MM-DD)
+              -var month = item.TIInstallDate.getMonth() + 1
+              -var day = item.TIInstallDate.getDate()
+              if (month < 10)
+                if (day < 10)
+                    input(class='form-control', name='Install', value='#{item.TIInstallDate.getFullYear()}-0#{item.TIInstallDate.getMonth()+1}-0#{item.TIInstallDate.getDate()}' type='date')
+                else    
+                    input(class='form-control', name='Install', value='#{item.TIInstallDate.getFullYear()}-0#{item.TIInstallDate.getMonth()+1}-#{item.TIInstallDate.getDate()}' type='date')
+              else
+                if (day < 10)
+                    input(class='form-control', name='Install', value='#{item.TIInstallDate.getFullYear()}-#{item.TIInstallDate.getMonth()+1}-0#{item.TIInstallDate.getDate()}' type='date')
+                else
+                    input(class='form-control', name='Install', value='#{item.TIInstallDate.getFullYear()}-#{item.TIInstallDate.getMonth()+1}-#{item.TIInstallDate.getDate()}' type='date')      
+            
+            div.form-group
+              label Condition
+              select(class='form-control' name='Condition', value='#{item.TIStatus}')
+                option(value='#{item.TIStatus}') #{item.TIStatus}
+                option(value='New') New
+                option(value='Good') Good
+                option(value='Fair') Fair
+                option(value='Poor') Poor
+                option(Value='Broken') Broken
+            div.form-group
+                button(class='btn btn-default' name='id' type='submit', value='#{item._id}') Submit

@@ -1,0 +1,47 @@
+extends layout
+
+block content 
+	h1 Recieved Tools Form
+	table.table
+		each entry in request
+			thead
+				th Client
+				th Location
+				th Date of request
+				th Field Engineer Mangager
+				th Field Engineer
+				th Severity
+				th Tool(s) Recieved
+			tbody
+				tr
+					td #{entry.RClient}
+					td #{entry.RLocation}
+					td #{entry.RDate}
+					td #{entry.RFFEM}
+					td #{entry.RFE}
+					td #{entry.RSeverity}
+					td 
+						a(href='recievedTools?id=#{entry._id}') Recieved Tools
+				tr
+					thead
+						th Tool
+						th Serial Number
+						th Approval Details
+						th Status
+						th Date Needed By
+						th Return Date
+					tbody
+						each item in entry.ToolRequest
+							if (item.Status == 'Not Approved')
+
+							else	
+								tr
+									td #{item._masterTool.MTName}
+									if (item._ToolInventory == null)
+										td 
+									else
+										td #{item._ToolInventory._TISerialNumber}
+									td #{item.Approval}
+									td #{item.Status}
+									td #{item.Start}
+									td #{item.End}

@@ -1,0 +1,39 @@
+extends layout
+
+block content  
+	h1 Edit Tool Requests For:
+	table.table
+		thead
+			th Client
+			th Location
+			th Created On
+			th FEM
+			th FE
+			th Severity
+		tbody
+			tr
+				td #{list.RClient}
+				td #{list.RLocation}
+				td #{list.RDate}
+				td #{list.RFFEM}
+				td #{list.RFE}
+				td #{list.RSeverity}
+
+	form(name='editToolRequest' action='/updateToolRequest' method='POST' role='form')
+		input(type='hidden' name='formID' value='#{list._id}')
+		each entry in list.ToolRequest
+			h2 #{entry._masterTool.MTName}	
+			div.form-group
+				label Tool Name
+				select(class='form-control', name='name#{entry._id}')
+					option(value='#{entry._masterTool._id}') #{entry._masterTool.MTName}
+					each item in MTool
+						option(value='#{item._id}') #{item.MTName}
+			div.form-group
+				label Tool Needed On: 
+				input(class='form-control' name='start#{entry._id}' value='#{entry.Start}' type='date')
+			div.form-group
+				label Estimated Date of Return
+				input(class='form-control' name='end#{entry._id}' value='#{entry.End}' type='date')
+		div.form-group
+			button(class='btn btn-default' type='submit') Submit

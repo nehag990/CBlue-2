@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET helloworld page. */
+/* GET home page. */
 router.get('/startApp', function(req, res) {
-  res.render('startApp');
+  res.render('startApp', { title: 'Express' });
 });
 
 module.exports = router;

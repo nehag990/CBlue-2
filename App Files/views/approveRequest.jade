@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	h2 Approve Requests
+	table.table
+		thead
+			th Client
+			th Date of Request
+			th Location
+			th Field Engineer Manager
+			th Field Engineer
+			th Severity
+			th Approve tools
+		tbody
+			each request in requests
+				tr
+					td #{request.RClient}
+					td #{request.RDate}
+					td #{request.RLocation}
+					td #{request.RFFEM}
+					td #{request.RFE}
+					td #{request.RSeverity}
+					td 
+						a(href='approveRequest?id=#{request._id}') approve items

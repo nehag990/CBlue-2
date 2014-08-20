@@ -1,0 +1,35 @@
+extends layout
+
+block content
+	h2 Approve Tools:
+	table.table
+		thead
+			th Client
+			th Date of Request
+			th Location
+			th Field Engineer Manager
+			th Field Engineer
+			th Severity
+		tbody
+			tr
+				td #{request.RClient}
+				td #{request.RDate}
+				td #{request.RLocation}
+				td #{request.RFFEM}
+				td #{request.RFE}
+				td #{request.RSeverity}
+
+	form(name='approveTools' action='/approveTools' method='POST' role='form')
+		input(type='hidden' name='formID' value='#{request._id}')
+		each item in request.ToolRequest
+			h3 #{item._masterTool.MTName}
+			div.form-group
+				label Approve Tool
+				select(class='form-control' name='approval#{item._id}')
+					each inventory in available
+						if (item._masterTool.MTName == inventory._TIMaster.MTName)
+							option(value='#{inventory._id}') #{inventory._TISerialNumber}
+					option(value='purchase') Purchase
+					option(value='rent') Rent 
+					option(value='notApproved') Don't Approve
+		button(class='btn btn-default' type='submit') Submit

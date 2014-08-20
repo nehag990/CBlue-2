@@ -1,0 +1,50 @@
+extends layout
+
+block content  
+	h1 Request List
+	table.table
+		each item in requestList
+			thead
+				th ID
+				th Request Date
+				th Client
+				th Location
+				th Field Engineer Manager
+				th Field Engineer
+				th Severity
+				th Edit
+			tbody
+			
+				tr
+					td #{item._id}
+					td #{item.RDate}
+					td #{item.RClient}
+					td #{item.RLocation}
+					td #{item.RFFEM}
+					td #{item.RFE}
+					td #{item.RSeverity}
+					td 
+						a(href="/listRequest?q=reqs&id=#{item._id}") edit	
+					tr
+						thead
+							th Tool Name
+							th Serial Number
+							th Approval Details
+							th Status
+							th Start Date
+							th End Date
+							th Edit
+						tbody
+							each tool in item.ToolRequest
+								tr
+									td #{tool._masterTool.MTName}
+									if (tool._ToolInventory == null)
+										td
+									else
+										td #{tool._ToolInventory._TISerialNumber}
+									td #{tool.Approval}
+									td #{tool.Status}
+									td #{tool.Start}
+									td #{tool.End}
+									td
+										a(href='listRequest?q=#{item._id}&id=#{tool._id}') edit

@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Hello, World! 
+	h2 Welcome #{firstname + " " + lastname}
+	hr
+	h2 #{tabletitle}
+	table(border='1')
+		tr
+			th #{header1}
+			th #{header2}
+			th #{header3}
+			- for user in userset
+				tr
+					td= user.userid
+					td= user.name
+					td= user.password

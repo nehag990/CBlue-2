@@ -1,0 +1,24 @@
+extends layout
+
+block content  
+
+	h2 New Tool Request
+	form(name='toolRequest' action='/createToolRequest' method='POST' role='form')
+		div.form-group
+			label Open Requests - Client | Location | FFEM | Severity
+			select(class='form-control' name='request')
+				each request in requestList
+					option(value='#{request._id}') #{request.RClient} | #{request.RLocation} | #{request.RFFEM} | #{request.RSeverity}
+		div.form-group		
+			label Tool
+			select(class='form-control' name='tool')
+				each tool in toolList
+					option(value='#{tool._id}') #{tool.MTName}
+		div.form-group
+			label Start Date
+			input(class='form-control' name='start' type='date')
+		div.form-group
+			label End Date
+			input(class='form-control' name='end' type='date')
+		div.form-group
+			button(class='btn btn-default' type='Submit') Submit

@@ -15,14 +15,28 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var helloworld = require('./routes/helloworld');
 var sampleform = require('./routes/sampleform');
-var addCompany = require('./routes/addCompany');
 var addMasterTool = require('./routes/addMasterTool');
 var listMasterTool = require('./routes/listMasterTool');
+var addInventory = require('./routes/addInventory');
+var listInventory = require('./routes/listInventory');
+var addRequest = require('./routes/addRequest');
+var listRequest = require('./routes/listRequest');
+var addToolRequest = require('./routes/addToolRequest');
+var fieldEngrMngHome = require('./routes/fieldEngrMngHome');
+var toolMngHome = require('./routes/toolMngHome');
+var fieldEngrHome = require('./routes/fieldEngrHome'); 
+var startApp = require('./routes/startApp');
 
 // Routes to database operations in response to form inputs 
 var createMasterTool = require('./model/createMasterTool');
-var startApp = require('./routes/startApp');
-var fieldEngrHome = require('./routes/fieldEngrHome');
+var createInventory = require('./model/createInventory');
+var deleteInventory = require('./model/deleteInventory');
+var updateInventory = require('./model/updateInventory');
+var createRequest = require('./model/createRequest');
+var deleteRequest = require('./model/deleteRequest');
+var updateRequest = require('./model/updateRequest');
+var createToolRequest = require('./model/createToolRequest');
+var updateToolRequest = require('./model/updateToolRequest');
 
 var app = express();
 
@@ -55,31 +69,16 @@ app.get('/sampleform', sampleform);
 //req.body.{text} is used to request the element in the body of the page matching 
 //entered text  
 app.post('/showresults', function(req, res) { 
-    res.render('showresults', {
-        location: req.body.location, 
-        fename: req.body.name, 
-        feemail: req.body.email
-    }); 
+    res.render('showresults', {location: req.body.location, fename: req.body.fename, 
+    feemail: req.body.feemail, severity: req.body.severity}); 
 });
-
-app.get('/addCompany', addCompany);
-
-app.post('/displayCompany', function(req, res) { 
-    res.render('displayCompany', {
-        cname: req.body.name,
-        cstreet: req.body.street,
-        ccity: req.body.city,
-        cstate: req.body.state,
-        ccountry: req.body.country,
-        csla: req.body.sla,
-        ccontact: req.body.contact,
-        cemail: req.body.email
-    }); 
-});
-
 // Access form pages from browser
 app.get('/addMasterTool', addMasterTool);
 app.get('/listMasterTool', listMasterTool);
+app.get('/fieldEngrMngHome',fieldEngrMngHome);
+app.get('/fieldEngrHome',fieldEngrHome);
+app.get('/toolMngHome',toolMngHome);
+app.get('/startApp', startApp);
 // Code to be executed in response to the form in "addMasterTool.jade"
 // This code is separated from the app.js for clarity
 // Contrast that with the code from the other operations below
@@ -111,9 +110,24 @@ app.post('/deleteMasterTool', function(req,res){
     res.render('index'); 
 })
 
-app.get('/startApp', startApp);
-app.get('/fieldEngrHome', fieldEngrHome);
+// Set of calls to manage inventory
+app.get('/addInventory', addInventory);
+app.post('/createInventory', createInventory);
+app.get('/listInventory', listInventory);
+app.post('/deleteInventory', deleteInventory);
+app.post('/updateInventory', updateInventory);
 
+// Set of calls to request management
+app.get('/addRequest', addRequest);
+app.post('/createRequest', createRequest);
+app.get('/listRequest', listRequest);
+app.post('/deleteRequest', deleteRequest);
+app.post('/updateRequest', updateRequest);
+app.get('/addToolRequest', addToolRequest);
+app.post('/createToolRequest', createToolRequest);
+app.post('/updateToolRequest', updateToolRequest);
+
+// Errors section
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
