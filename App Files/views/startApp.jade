@@ -1,15 +1,23 @@
 extends layout
 
 block content
-	body(id="button1")
+	body
 		.col-lg-12.col-md-12.col-sm-12.col-xs-12
 			h1(id="title") Welcome
 		.form-group.col-lg-4.col-md-6.col-sm-12.col-xs-12
-			button(class="btn btn-default btn-lg btn-block", href="/fieldEngrHome")
+			a(class="btn btn-default btn-lg btn-block", href="/fieldEngrHome", role=button)
 				h2 Field Engineer 
 		.form-group.col-lg-4.col-md-6.col-sm-12.col-xs-12
-			button(class="btn btn-default btn-lg btn-block", href="/fieldEngrMngHome")
+			a(class="btn btn-default btn-lg btn-block", href="/fieldEngrMngHome", role=button)
 				h2 Field Engineer Manager
 		.form-group.col-lg-4.col-md-6.col-sm-12.col-xs-12
-			button(class="btn btn-default btn-lg btn-block", href="/toolMngHome")
+			a(class="btn btn-default btn-lg btn-block", href="/toolMngHome", role=button)
 				h2 Tool Manager
+
+	//- ul(id="navigation")
+		li(class="home" href="" title="Home")
+		li(class="about" href="" title="About")
+		li(class="search" href="" title="search")
+		li(class="photos" href="" title="photos")
+		li(class="home" href="" title="Home")
+		li(class="about" href="" title="About")
